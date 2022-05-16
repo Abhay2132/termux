@@ -5,7 +5,7 @@ then
   bnf=$1
 fi
 
-curl "https://raw.githubusercontent.com/Abhay2132/termux/main/${bfn}" > $bfn
+curl -s "https://raw.githubusercontent.com/Abhay2132/termux/main/${bfn}" > $bfn
 
 if [ ! -f $bfn ]
 then
@@ -14,7 +14,6 @@ then
 fi
 
 echo -e "Backup Dowload completed !\a"
-exit
 
 tar -xvf $bfn -C ~/../usr/bin --recursive-unlink --preserve-permissions 
 
