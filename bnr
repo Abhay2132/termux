@@ -1,15 +1,20 @@
-bfn="sh.tar.bz2"
+bfn="sh.tar.bz2" # Backup File Name
 
 if [ $1 ]
 then 
   bnf=$1
 fi
 
+curl "https://raw.githubusercontent.com/Abhay2132/termux/main/${bfn}" > $bfn
+
 if [ ! -f $bfn ]
 then
   echo "Error : Backup file Missing ( i.e., sh.tar.gz)"
   exit
 fi
+
+echo -e "Backup Dowload completed !\a"
+exit
 
 tar -xvf $bfn -C ~/../usr/bin --recursive-unlink --preserve-permissions 
 
