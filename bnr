@@ -1,0 +1,21 @@
+bfn="sh.tar.bz2"
+
+if [ $1 ]
+then 
+  bnf=$1
+fi
+
+if [ ! -f $bfn ]
+then
+  echo "Error : Backup file Missing ( i.e., sh.tar.gz)"
+  exit
+fi
+
+tar -xvf $bfn -C ~/../usr/bin --recursive-unlink --preserve-permissions 
+
+pkg update -y 
+pkg upgrade -y
+pkg autoremove -y
+
+pkg install -y vim nodejs git termux-services busybox
+npm i -g nodemon prettier
