@@ -8,5 +8,5 @@ chmod +x bnr
 ./bnr
 
 rm bnr sh.tar.bz2
-echo "Backup Completed !"
+echo "Restore Completed !"
 ```
