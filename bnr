@@ -28,7 +28,7 @@ EOF
 
 pkg autoremove -y
 
-pkg install -y vim nodejs git termux-services busybox
+pkg install -y python2 python3 python vim nodejs git termux-services busybox
 npm i -g nodemon prettier
 
 #installing Heroku
