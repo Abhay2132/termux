@@ -1,0 +1,3 @@
+sv down ftpd
+echo "FTP server Stopped !"
+echo "Run f cmd to start it again..."

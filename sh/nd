@@ -1,0 +1,19 @@
+if [ ! -f "package.json" ]
+then
+  cd `cat ~/ld`
+fi
+pwd
+if [ ! -f "package.json" ]
+then
+  echo "Error : Package.json is missing !"
+  exit 1
+fi
+ a=$1
+if [ "${a}" == "-p" ]
+then
+  export NODE_ENV=productíon
+fi
+
+pwd > ~/ld
+npm run dev
+

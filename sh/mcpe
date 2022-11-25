@@ -1,0 +1,15 @@
+cd `cat ~/mcpe`
+
+read -p "message : " m
+if [ ! $m ]
+then
+  m="quick backup !"
+fi
+
+git config --global user.name "abhay2132"
+git config --global user.email "abhaybro768@gmail.com"
+
+git add `cat ~/wn` -v
+git commit -m "${m}"
+
+git push

@@ -1,0 +1,81 @@
+if [ ! $1 ]
+then
+  echo -e "Enter a pkg name eg. napi express"
+  exit
+fi
+
+if [ ! -f "./package.json" ]
+then
+  echo -e "\"package.json\" not found !"
+  echo "run \"npm init\" first :D"
+  exit
+fi
+
+echo -e "\v Npm ( Node Package Manager )"
+
+cmd="install"
+opt="--save"
+pkg=""
+zip=0
+for arg in $@
+do
+  if [ $arg == "-u" ]
+  then
+    cmd="uninstall"
+  elif [ $arg == "-sd" ]
+  then
+    opt="--save-dev"
+  elif [ $arg == "-s" ]
+  then
+    opt="--save"
+  elif [ $arg == "-f" ]
+  then
+    opt="${opt} --force"
+  elif [ $arg == "-z" ]
+  then
+    zip=1
+  elif [ $arg != "-i" ]
+  then
+    pkgs="${pkgs} ${arg}"
+  fi
+done
+
+echo -e "\nnpm cache clean --force"
+npm cache clean --force
+
+cwd=`pwd`
+bn=`basename $cwd`
+cd ..
+parent=`pwd`
+
+echo -e "\v Moving File from :-"
+echo -e "  ${cwd} -> Termux \n (Do not exit...)"
+echo -e "\n"
+
+cd
+rm -rf $bn
+mkdir $bn
+cd $parent
+cp -R -L $bn ~/
+
+cd ~/$bn
+
+echo -e "\v npm ${cmd} ${opt} ${pkgs} \v"
+npm $cmd $opt $pkgs
+
+if [ $zip -eq 1 ]
+then
+  echo "Compressing node_modules -> nm.tar.bz2"
+  tar cfj nm.tar.bz2 node_modules
+fi
+
+echo -e "\v Moving File from :-"
+echo -e "  Termux -> ${cwd} \n (Do not exit...)\v"
+rm -rf $cwd
+cd ~/
+cp -R -L $bn $parent
+
+rm -rf ~/$bn
+
+echo -e "pkg/s \"${pkgs}\" is ${cmd}ed ..."
+echo " run cd ."

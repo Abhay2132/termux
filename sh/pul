@@ -1,0 +1,43 @@
+
+if [ ! -d ".git" ]
+then
+  echo "Error : This dir is not a Git Repo ! "
+  exit
+fi
+
+usr="abhay2132"
+if [ $1 ]
+then
+  usr=$1
+fi
+
+cwd=`pwd`
+dir=`basename $cwd`
+
+cd ..
+upDir=`pwd`
+
+if [ ! -d "temp" ]
+then
+  mkdir temp
+fi
+
+cd temp
+git clone "https://github.com/${usr}/${dir}"
+
+if [ ! -d $dir ]
+then
+  echo "Current Dir (${dir}) is not a repo of user '${usr}' :b"
+  exit
+fi
+
+cd ..
+rm -rf $dir
+
+cd temp
+cp -r -L $dir $upDir
+
+cd $upDir
+rm -rf temp
+
+echo "Repo '${dir}' is Pulled from GIT ;D"

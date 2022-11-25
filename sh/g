@@ -1,0 +1,36 @@
+ui () {
+  while [ 1 -eq 1 ]
+  do
+    cwd=`pwd`
+    repo=`basename $cwd`
+    echo "______ GIT ______"
+    echo -e "\nrepo : ${repo}\n"
+    echo -e " 1. Add Files \n 2. Commit Changes"
+    echo -e " 3. Push \n 4. Pull \n 5. Exit"
+    read -p " => " c
+    if [ $c -eq 5 ]
+    then
+      echo -e "\n Bye Bye ,GoodBye !"
+      exit
+    fi
+    ch $c
+  done
+  
+}
+
+ch () { #ch => choice handler
+  c=$1
+  if [ $c -eq 1 ]
+  then
+    add $@
+  fi
+}
+
+add () {
+  read -p "Adding Files ..." c
+}
+
+if [ -z $@ ]
+then
+  ui
+fi

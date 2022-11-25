@@ -1,0 +1,25 @@
+if [ ! -d ".git" ]
+then
+  cd `cat ~/lpd`
+fi
+pwd
+if [ ! -d ".git" ]
+then
+  echo "Error : not a git Repo..."
+  exit 1
+fi
+
+git branch
+
+read -p "message : " m
+if [ ! "${m}" ]
+then
+  m="Quick Backup !"
+fi
+git add -A -v
+git config --global user.name "abhay2132"
+git config --global user.email "abhaybro768@gmail.com"
+git commit -m "${m}"
+git push
+
+pwd > ~/lpd     #lpd means last pushed directory

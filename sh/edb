@@ -1,0 +1,11 @@
+echo "password : ol037LX5ppfZ2dCBVFwyzm64ohQkDYDv"
+
+psql -h 'jelani.db.elephantsql.com' -p 5432 -U cnribtus cnribtus
+
+echo "Triggering render update !"
+curl -s 'https://nodepro.onrender.com/index' | grep 'Abhay'
+
+echo "Starting update !"
+curl -s 'https://nodepro.onrender.com/index' | grep 'Abhay'
+
+echo "Done ! "

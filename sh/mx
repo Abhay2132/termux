@@ -1,0 +1,5 @@
+for fn in $@
+do
+  chmod +x $fn
+  echo "chmod +x ${fn}"
+done

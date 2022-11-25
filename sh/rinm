@@ -1,0 +1,19 @@
+echo Re Install Node Modules
+
+if [ ! -f "package.json" ]
+then
+  echo "Error : Package.json is missing ! "
+  exit
+fi
+
+if [ ! -f $PATH/Npm ]
+then
+  echo "Error : Npm cmd not found !"
+  exit 1
+fi
+
+echo -e "\n Deleting Node_Modules dir ..."
+rm -rf node_modules
+echo "Deleted !"
+
+Npm -i

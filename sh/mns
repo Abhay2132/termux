@@ -1,0 +1,11 @@
+if [ ! $1 ]
+then
+  echo "error : empty argument ! "
+  exit
+fi
+
+cd ~/../usr/bin
+touch $1
+mx $1
+vim $1
+

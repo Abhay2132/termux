@@ -3,10 +3,5 @@ To install all my dev dependencies ;D
 
 **To download Backup & install it :**
 ```
-curl "https://raw.githubusercontent.com/Abhay2132/termux/main/bnr" > bnr
-chmod +x bnr
-./bnr
-
-rm bnr sh.tar.bz2
-echo "Restore Completed !"
+curl "https://raw.githubusercontent.com/Abhay2132/termux/main/bnr.sh" > bnr.sh && chmod +x bnr.sh && ./bnr.sh && echo "Restore Completed !"
 ```

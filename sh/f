@@ -1,0 +1,5 @@
+
+sv-enable ftpd
+sv up ftpd
+echo "FTP server Started"
+echo "Run fx cmd to stop it"

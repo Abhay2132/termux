@@ -1,0 +1,19 @@
+if [ $1 == "-s" ]
+then
+  pg_ctl -D $PREFIX/var/lib/postgresql start
+  echo "run 'pg -q' to stop the server"
+  exit
+elif [ $1 == "-q" ]
+then
+  pg_ctl -D $PREFIX/var/lib/postgresql stop
+  echo "run 'pg -s' to start server again ;D"
+  exit
+elif [ $1 == "-h" ]
+then
+  echo "run 'pg -s' to start postgres server ;D"
+  echo "run 'pg -q' to stop it :)"
+elif [ $1 == "-u" ]
+then
+  createuser --superuser --pwprompt $2
+  echo "New user '${2}' created "
+fi
